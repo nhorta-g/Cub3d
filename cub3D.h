@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nhorta-g <nhorta-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/19 00:15:04 by nuno             ###   ########.fr       */
+/*   Updated: 2023/09/20 13:08:55 by nhorta-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,17 @@ typedef struct s_player
 
 }	t_player;
 
+typedef struct s_m_map
+{
+
+}	t_m_map;
+
+typedef struct
+
 typedef struct s_data
 {
+	void	mlx;
+	void	mlx_win;
 	char	**map;		// matriz com caracteres do mapa
 	int		c_floor;	//cor chao
 	int		c_ceiling;	//cor tecto
@@ -39,7 +48,8 @@ typedef struct s_data
 	int		gnl_x;		//num linhas do input file dedicadas à textura e cores
 	int		x;			//x coord of position in map matrix of the character
 	int		y;			//y coord of position in map matrix of the character
-	t_player *s_player;
+	t_plyer	*plyer;
+	t_m_map	*m_map;
 
 }	t_data;
 
@@ -56,10 +66,16 @@ int		alloc_map(t_data *data, char **av);
 int		fill_map(char **av, t_data *data);
 int		validate_map(t_data *data);
 
+//validate_map_utils.c
+int		check_walls(t_data *data, int j, int i);
+
 //utils.c
 int		skip_spaces(char *str, int i);
 int		print_error(char *str);
 int		free_double(char ***array);
 int		free_data(t_data *data);
+
+//init_map.c
+int		init_map();
 
 #endif
