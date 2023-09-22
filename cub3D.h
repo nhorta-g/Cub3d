@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nhorta-g <nhorta-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/22 10:31:13 by nuno             ###   ########.fr       */
+/*   Updated: 2023/09/22 15:40:01 by nhorta-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,10 @@ typedef struct s_player
 }	t_playr;
 
 typedef struct s_mlx
-{;
+{
 	void	*ptr;
 	void	*win;
+	
 }	t_mlx;
 
 typedef struct s_data
@@ -50,7 +51,8 @@ typedef struct s_data
 	int		gnl_x;		//num linhas do input file dedicadas à textura e cores
 	int		x;			//x coord of position in map matrix of the character
 	int		y;			//y coord of position in map matrix of the character
-	t_player *s_player;
+	t_playr	player;
+	t_mlx	mlx;
 
 }	t_data;
 
@@ -78,6 +80,6 @@ int		free_data(t_data *data);
 int		free_all_data(t_data *data);
 
 //mini_map.c
-
+int		put_image(t_data *data);
 
 #endif

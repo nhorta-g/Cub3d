@@ -19,7 +19,7 @@
     "C_Cpp.intelliSenseEngineFallback": "enabled",
     "C_Cpp.default.intelliSenseMode": "linux-clang-x64",
 	"C_Cpp.clang_format_sortIncludes": true,
-	"C_Cpp.default.compilerPath": "/usr/include/x86_64-linux-gnu",
+	"C_Cpp.default.compilerPath": "/usr/bin/gcc",
 
 	"terminal.integrated.profiles.linux": {
         "bash": {

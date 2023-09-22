@@ -1,3 +1,3 @@
-#include "cub3ed.c"
+#include "cub3d.c"
 
 
