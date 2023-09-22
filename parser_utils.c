@@ -100,7 +100,6 @@ int	alloc_map(t_data *data, char **av)
 
 	v = data->gnl_x;
 	mapfd = open(av[1], O_RDONLY, 0644);
-	//Não percebi o objectivo deste loop
 	while (1)
 	{
 		if (v-- <= 0 && *buffer != '\0')

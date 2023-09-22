@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nhorta-g <nhorta-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 16:08:33 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/20 11:16:05 by nhorta-g         ###   ########.fr       */
+/*   Updated: 2023/09/22 10:32:31 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int	walkable(char c)
 {
-
+	if (c == 'N' || c == 'S' || c == 'W' || c == 'E' || c == '0')
+		return (1);
+	return (0);
 }
 
 int	check_walls(t_data *data, int j, int i)
@@ -25,7 +27,7 @@ int	check_walls(t_data *data, int j, int i)
 	int	d;
 
 	a = i;
-	while (a > 0 && data->map[++a][j] && walkable(data->map[a][j]))
+	while (a > 0 && (a < data->map_y - 1 && data->map[++a][j]) && walkable(data->map[a][j]))
 		continue ;
 	b = i;
 	while (b > 0 && data->map[--b][j] && walkable(data->map[b][j]))
@@ -36,7 +38,9 @@ int	check_walls(t_data *data, int j, int i)
 	d = j;
 	while (d > 0 && data->map[i][--d] && walkable(data->map[i][d]))
 		continue ;
-	if ()
+	if (!data->map[i][d] || !data->map[i][c] || !data->map[b][j] || !data->map[a][j]
+		|| data->map[i][d] != '1' || data->map[i][c] != '1' || data->map[b][j] != '1'
+		|| (a == data->map_y - 1 && data->map[a][j] != '1'))
 		return (1);
 	return (0);
 }

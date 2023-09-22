@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nhorta-g <nhorta-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 14:57:42 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/20 11:15:34 by nhorta-g         ###   ########.fr       */
+/*   Updated: 2023/09/22 10:32:06 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ int	validate_map(t_data *data)
 			if (check_illegal(data->map[i][j])
 				|| check_dupe(data->map[i][j], data, i, j))
 				return (print_error("illegal char in map or char duped"));
-			else if (data->map[i][j] == '0')
-				if (check_walls(data, i , j))
+			if (data->map[i][j] == '0')
+				if (check_walls(data, i, j))
 					return (print_error("invalid map: unclosed"));
 			j++;
 		}
