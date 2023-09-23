@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nhorta-g <nhorta-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:25 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/22 15:32:46 by nhorta-g         ###   ########.fr       */
+/*   Updated: 2023/09/22 17:50:17 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	init_data(t_data *data)
 		perror("Error establishing connection to graphical system");
 		exit(1);
 	}
-}sd
+}
 
 int	main(int ac, char **av)
 {
@@ -53,4 +53,3 @@ int	main(int ac, char **av)
 	if (!parser(av, data))
 		free_data(data);
 }
-
