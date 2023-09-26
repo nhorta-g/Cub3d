@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nhorta-g <nhorta-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 16:11:35 by nuno              #+#    #+#             */
-/*   Updated: 2023/09/22 15:47:41 by nhorta-g         ###   ########.fr       */
+/*   Updated: 2023/09/25 13:24:18 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,9 @@ int	put_image(t_data *data)
 		y = -1;
 		while (data->map[x][++y])
 		{
-			mlx_put_image_to_window(data->mlx.ptr, data->mlx.win, \
-			data[(win->map[x][y] == 'P') * 4 + \
-			(win->map[x][y] == '0') * 5 + (win->map[x][y] == 'C') * 6 \
-			+ (win->map[x][y] == 'E') * 7 + (win->map[x][y] == 'X') * 8] \
-			, y * 48, x * 48);
+			if (data->map[x][y] == '0')
+				draw_square(data, x * 40, y * 40, 40, MINIMAP_COLOR_WALL);
 		}
 	}
+	return (1);
 }
-

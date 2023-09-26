@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 16:08:33 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/22 18:53:22 by nuno             ###   ########.fr       */
+/*   Updated: 2023/09/25 13:47:03 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ int	walkable(char c)
 
 int	check_walls(t_data *data, int j, int i)
 {
-	int	a;
-	int	b;
-	int	c;
-	int	d;
+	size_t	a;
+	size_t	b;
+	size_t	c;
+	size_t	d;
 
 	a = i;
 	while (a > 0 && (a < data->map_y - 1 && data->map[++a][j]) && walkable(data->map[a][j]))

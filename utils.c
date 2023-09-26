@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:37:36 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/21 22:00:48 by nuno             ###   ########.fr       */
+/*   Updated: 2023/09/25 13:19:47 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,14 @@ int	free_double(char ***array)
 int	free_data(t_data *data)
 {
 	free_double(&data->map);
-	return (0);
+	return (1);
 }
 
 int	free_all_data(t_data *data)
 {
 	if (!data->mlx.win)
-		mlx_destroy_window(data->mlx.ptr);
+		mlx_destroy_window(data->mlx.ptr, data->mlx.win);
 	//mlx_destroy_image das texturas a acrescentar
 	free_data(data);
+	return (1);
 }

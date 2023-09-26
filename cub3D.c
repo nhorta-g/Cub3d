@@ -6,13 +6,13 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:25 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/22 17:50:17 by nuno             ###   ########.fr       */
+/*   Updated: 2023/09/25 13:52:24 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	init_window(t_data *data)
+void	init_window(t_data *data)
 {
 	data->mlx.win = mlx_new_window(data->mlx.ptr, data->map_x, data->map_y, "Cub3d");
 	if (!data->mlx.win)
@@ -21,11 +21,12 @@ int	init_window(t_data *data)
 		free_all_data(data);
 		exit(1);
 	}
+	data->img.mlx_img = mlx_new_image(data->mlx.ptr, data->map_x, data->map_y);
 	put_image(data);
 	mlx_loop(data->mlx.ptr);
 }
 
-int	init_data(t_data *data)
+void	init_data(t_data *data)
 {
 	data->c_ceiling = -1;
 	data->c_floor = -1;
@@ -47,9 +48,9 @@ int	main(int ac, char **av)
 
 	data = (t_data *)calloc(1, sizeof(t_data));
 	if (ac != 2)
-		return (write(1, "Error\n-Wrong number of args", 27));
+		return (write(1, "Error\n-Wrong number of args\n", 28));
 	init_data(data);
-	init_window(data);
 	if (!parser(av, data))
 		free_data(data);
+	init_window(data);
 }

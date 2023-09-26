@@ -6,19 +6,19 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 14:57:42 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/22 18:53:07 by nuno             ###   ########.fr       */
+/*   Updated: 2023/09/25 13:45:07 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	add_spaces(t_data *data, char *str, int j)
+void	add_spaces(t_data *data, int j)
 {
 	while (ft_strlen(data->map[j]) < data->map_x)
 		data->map[j] = ft_strjoin_free(data->map[j], " ");
 }
 
-int	rectify_shape(t_data *data)
+void	rectify_shape(t_data *data)
 {
 	int	i;
 	int	j;
@@ -28,7 +28,7 @@ int	rectify_shape(t_data *data)
 	while (i >= 0 && data->map[j])
 	{
 		if (ft_strlen(data->map[j]) < data->map_x)
-			add_spaces(data, data->map[j], j);
+			add_spaces(data, j);
 		i--;
 		j++;
 	}

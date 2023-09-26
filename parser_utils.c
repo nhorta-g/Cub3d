@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:21:00 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/18 23:21:17 by nuno             ###   ########.fr       */
+/*   Updated: 2023/09/25 16:20:32 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	fill_textures(t_data *data, char *line, int i, int index)
 	if (ft_strncmp(&line[ft_strlen(line) - 4], ".xpm", 4))
 		return (print_error("Path not in xpm format"));
 	if (access(&line[i], R_OK))
-		return (print_error("Cant access path"));
+		perror("Cant access path");
 	data->texture[index] = ft_substr(line, i, ft_strlen(line) - i);
 	return (0);
 }
@@ -74,7 +74,7 @@ int	alloc_map_2(int v, char *buffer, int mapfd, t_data *data)
 			break ;
 		if (!buffer[0])
 			return (print_error("Invalid map: empty line"));
-		free(buffer);
+		//free(buffer);
 		v++;
 		if (ft_strlen(buffer) > data->map_x)
 			data->map_x = ft_strlen(buffer);

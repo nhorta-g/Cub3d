@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/22 18:49:31 by nuno             ###   ########.fr       */
+/*   Updated: 2023/09/25 13:22:39 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,14 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include "libft/libft.h"
-# include "../mlx_linux/mlx.h"
+# include "./mlx_linux/mlx.h"
 
 # define MAP_W 1080
 # define MAP_H 720
+
+//COLORS
+# define MINIMAP_NO_COLOR	0xFFFFFFFF
+# define MINIMAP_COLOR_WALL	0x002A2829
 
 typedef struct s_mlx
 {
@@ -55,9 +59,9 @@ typedef struct s_data
 	int		c_floor;	//cor chao
 	int		c_ceiling;	//cor tecto
 	char	*texture[4]; //as quartro strings com o path para o file de cada textura
-	int		map_x;		//num colunas do input file dedicadas ao mapa, depois de text e cores
-	int		map_y;		//num linhas do input file dedicadas ao mapa, depois de text e cores
-	int		gnl_x;		//num linhas do input file dedicadas à textura e cores
+	size_t	map_x;		//num colunas do input file dedicadas ao mapa, depois de text e cores
+	size_t	map_y;		//num linhas do input file dedicadas ao mapa, depois de text e cores
+	size_t	gnl_x;		//num linhas do input file dedicadas à textura e cores
 	int		x;			//x coord of position in map matrix of the character
 	int		y;			//y coord of position in map matrix of the character
 	t_playr	player;
@@ -94,5 +98,6 @@ int		put_image(t_data *data);
 
 //draw_utils.c
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	draw_square(t_data *data, int pos_x, int pos_y, int size, int color);
 
 #endif
