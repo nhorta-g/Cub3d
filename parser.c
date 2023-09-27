@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:05:20 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/26 10:54:06 by nuno             ###   ########.fr       */
+/*   Updated: 2023/09/26 12:32:12 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int	check_file_data(char **av, t_data *data)
 		data->gnl_x++;
 		if (check_done(data))
 			break ;
+		printf("gnl_x: %ld\n", data->gnl_x);
 	}
 	close (mapfd);
 	if (!check_done(data))

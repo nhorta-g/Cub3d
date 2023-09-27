@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:25 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/25 13:52:24 by nuno             ###   ########.fr       */
+/*   Updated: 2023/09/26 21:57:10 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	init_window(t_data *data)
 {
+	data->mlx.ptr = mlx_init();
+	if (!data->mlx.ptr)
+		perror_exit("Error establishing connection to graphical system");
 	data->mlx.win = mlx_new_window(data->mlx.ptr, data->map_x, data->map_y, "Cub3d");
 	if (!data->mlx.win)
 	{
@@ -34,23 +37,23 @@ void	init_data(t_data *data)
 	data->map_x = 0;
 	data->x = -1;
 	data->y = -1;
-	data->mlx.ptr = mlx_init();
-	if (!data->mlx.ptr)
-	{
-		perror("Error establishing connection to graphical system");
-		exit(1);
-	}
 }
 
 int	main(int ac, char **av)
 {
 	t_data	*data;
+	(void)av;
 
-	data = (t_data *)calloc(1, sizeof(t_data));
+	data = (t_data *)ft_calloc(1, sizeof(t_data));
 	if (ac != 2)
-		return (write(1, "Error\n-Wrong number of args\n", 28));
-	init_data(data);
-	if (!parser(av, data))
+	{
 		free_data(data);
+		return (write(1, "Error\n-Wrong number of args\n", 28));
+	}
+
+	create_matrix_map(data);
+	//init_data(data);
+	//if (!parser(av, data))
+	//	free_data(data);
 	init_window(data);
 }

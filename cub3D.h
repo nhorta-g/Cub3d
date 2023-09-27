@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/25 13:22:39 by nuno             ###   ########.fr       */
+/*   Updated: 2023/09/26 22:11:35 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,10 @@ int		check_walls(t_data *data, int j, int i);
 //utils.c
 int		skip_spaces(char *str, int i);
 int		print_error(char *str);
-int		free_double(char ***array);
+int		free_double(char **array);
 int		free_data(t_data *data);
 int		free_all_data(t_data *data);
+void	perror_exit(char *msg);
 
 //mini_map.c
 int		put_image(t_data *data);
@@ -99,5 +100,7 @@ int		put_image(t_data *data);
 //draw_utils.c
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	draw_square(t_data *data, int pos_x, int pos_y, int size, int color);
+
+int		create_matrix_map(t_data *data);
 
 #endif

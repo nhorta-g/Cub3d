@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:21:00 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/25 16:20:32 by nuno             ###   ########.fr       */
+/*   Updated: 2023/09/26 17:41:02 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ int	fill_textures(t_data *data, char *line, int i, int index)
 	if (ft_strncmp(&line[ft_strlen(line) - 4], ".xpm", 4))
 		return (print_error("Path not in xpm format"));
 	if (access(&line[i], R_OK))
-		perror("Cant access path");
+	{
+		free_data(data);
+		perror_exit("Cant access path");
+	}
 	data->texture[index] = ft_substr(line, i, ft_strlen(line) - i);
 	return (0);
 }
@@ -34,7 +37,7 @@ int	fill_colours(t_data *data, char *line, int i, int index)
 	int		m;
 
 	tmp = ft_split(&line[i], ',');
-	if (!tmp[0] || !tmp[1] || !tmp[2] || (tmp[3] && free_double(&tmp)))
+	if (!tmp[0] || !tmp[1] || !tmp[2] || (tmp[3] && free_double(tmp)))
 		return (print_error("Wrong colour format"));
 	m = -1;
 	j = -1;
@@ -52,7 +55,7 @@ int	fill_colours(t_data *data, char *line, int i, int index)
 	else
 		data->c_ceiling = ((ft_atoi(tmp[0]) << 16) + (ft_atoi(tmp[1]) << 8)
 				+ (ft_atoi(tmp[2])));
-	free_double(&tmp);
+	free_double(tmp);
 	return (0);
 }
 
@@ -61,7 +64,7 @@ int	check_done(t_data *data)
 {
 	if (data->c_ceiling != -1 && data->c_floor != -1 && data->texture[0]
 		&& data->texture[1] && data->texture[2] && data->texture[3])
-		return (1);
+		return (2);
 	return (0);
 }
 
@@ -98,14 +101,21 @@ int	alloc_map(t_data *data, char **av)
 	char	*buffer;
 	int		v;
 
+	buffer = NULL;
 	v = data->gnl_x;
 	mapfd = open(av[1], O_RDONLY, 0644);
 	while (1)
 	{
 		if (v-- <= 0 && *buffer != '\0')
+		{
+			printf("hit_break_alloc_map %d\n", v);
 			break ;
-		if (buffer)
+		}
+		if (!buffer)
+		{
+			printf("hit_free %d\n", v);
 			free(buffer);
+		}
 		buffer = get_next_line(mapfd);
 	}
 	if (alloc_map_2(v, buffer, mapfd, data))
