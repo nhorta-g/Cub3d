@@ -46,5 +46,8 @@
             "icon": "terminal-powershell"
         }
     },
-    "terminal.external.linuxExec": "x-terminal-emulator"
+	"terminal.external.linuxExec": "x-terminal-emulator",
+	"files.associations": {
+		"cub3d.h": "c"
+	}
 }

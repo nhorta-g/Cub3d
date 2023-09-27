@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nhorta-g <nhorta-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:37:36 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/26 17:16:00 by nuno             ###   ########.fr       */
+/*   Updated: 2023/09/27 20:55:01 by nhorta-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,6 @@ int	free_double(char **array)
 	return (1);
 }
 
-void	perror_exit(char *msg)
-{
-	perror(msg);
-	exit(1);
-}
-
 int	free_data(t_data *data)
 {
 	free_double(data->map);
@@ -59,7 +53,26 @@ int	free_all_data(t_data *data)
 {
 	if (!data->mlx.win)
 		mlx_destroy_window(data->mlx.ptr, data->mlx.win);
-	//mlx_destroy_image das texturas a acrescentar
+
+	mlx_destroy_image(map()->mlx, texturas);
+	mlx_destroy_image(map()->mlx, );
+	mlx_destroy_image(map()->mlx, );
+	mlx_destroy_image(map()->mlx, );
+	mlx_destroy_image(map()->mlx, );
+	mlx_destroy_display(map()->mlx);
+	free(data->mlx.ptr);
 	free_data(data);
 	return (1);
+}
+
+void	perror_exit(char *msg, int code)
+{
+	perror(msg);
+	exit(code);
+}
+
+void	perror_exit_free_all_data(char *msg, int code)
+{
+	free_all_data(data);
+	perror_exit(msg, code);
 }

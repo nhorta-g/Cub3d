@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mini_map.c                                         :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhorta-g <nhorta-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/21 16:11:35 by nuno              #+#    #+#             */
-/*   Updated: 2023/09/27 15:15:39 by nhorta-g         ###   ########.fr       */
+/*   Created: 2023/09/27 20:24:04 by nhorta-g          #+#    #+#             */
+/*   Updated: 2023/09/27 20:50:26 by nhorta-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+# include "cub3D.h"
 
-int	put_image(t_data *data)
+int	exit_game(void)
 {
-	int	x;
-	int	y;
-
-	x = -1;
-	//load_images(win);
-	while (data->map[++x])
-	{
-		y = -1;
-		while (data->map[x][++y])
-		{
-			if (data->map[x][y] == '0')
-				draw_square(data, x * 40, y * 40, 40, MINIMAP_NO_COLOR);
-			else if  (data->map[x][y] == '1')
-				draw_square(data, x * 40, y * 40, 40, MINIMAP_COLOR_WALL);
-		}
-	}
-	return (1);
+	free_all_data(data);
+	exit(1);
 }
+
+int	hook(t_data *data, int key)
+{
+	int	move;
+
+	move = 0;
+	if (key == ESC)
+		exit_game(data);
+	if (key == W)
+		move = move_up();
+	if (key == S)
+		move = move_down();
+	if (key == A)
+		move = move_left();
+	if (key == D)
+		move = move_right();
+	return (move);
+}
+

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nhorta-g <nhorta-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/26 22:11:35 by nuno             ###   ########.fr       */
+/*   Updated: 2023/09/27 20:45:36 by nhorta-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@
 //COLORS
 # define MINIMAP_NO_COLOR	0xFFFFFFFF
 # define MINIMAP_COLOR_WALL	0x002A2829
+
+//keys
+# define ESC 65307
+# define A 97
+# define D 100
+# define S 115
+# define W 119
 
 typedef struct s_mlx
 {
@@ -92,7 +99,11 @@ int		print_error(char *str);
 int		free_double(char **array);
 int		free_data(t_data *data);
 int		free_all_data(t_data *data);
-void	perror_exit(char *msg);
+void	perror_exit(char *msg, int code);
+void	perror_exit_free_all_data(char *msg, int code);
+
+//mlx
+int	hook(t_data *data, int key);
 
 //mini_map.c
 int		put_image(t_data *data);
