@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nhorta-g <nhorta-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 20:24:04 by nhorta-g          #+#    #+#             */
-/*   Updated: 2023/09/27 20:50:26 by nhorta-g         ###   ########.fr       */
+/*   Updated: 2023/09/27 23:24:50 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "cub3D.h"
 
-int	exit_game(void)
+int	exit_game(t_data *data)
 {
 	free_all_data(data);
 	exit(1);
 }
-
+/*
 int	hook(t_data *data, int key)
 {
 	int	move;
@@ -35,4 +35,4 @@ int	hook(t_data *data, int key)
 		move = move_right();
 	return (move);
 }
-
+*/

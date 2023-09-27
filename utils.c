@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nhorta-g <nhorta-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:37:36 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/27 20:55:01 by nhorta-g         ###   ########.fr       */
+/*   Updated: 2023/09/27 23:22:26 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,14 @@ int	free_all_data(t_data *data)
 {
 	if (!data->mlx.win)
 		mlx_destroy_window(data->mlx.ptr, data->mlx.win);
-
-	mlx_destroy_image(map()->mlx, texturas);
-	mlx_destroy_image(map()->mlx, );
-	mlx_destroy_image(map()->mlx, );
-	mlx_destroy_image(map()->mlx, );
-	mlx_destroy_image(map()->mlx, );
-	mlx_destroy_display(map()->mlx);
+	/*
+	mlx_destroy_image(, texturas);
+	mlx_destroy_image(, );
+	mlx_destroy_image(, );
+	mlx_destroy_image(, );
+	mlx_destroy_image(, );
+	*/
+	mlx_destroy_display(data->mlx.ptr);
 	free(data->mlx.ptr);
 	free_data(data);
 	return (1);
@@ -71,7 +72,7 @@ void	perror_exit(char *msg, int code)
 	exit(code);
 }
 
-void	perror_exit_free_all_data(char *msg, int code)
+void	perror_exit_free_all_data(t_data *data, char *msg, int code)
 {
 	free_all_data(data);
 	perror_exit(msg, code);
