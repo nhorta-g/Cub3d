@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:25 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/28 00:04:38 by nuno             ###   ########.fr       */
+/*   Updated: 2023/09/28 14:42:16 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	init_window(t_data *data)
 		perror_exit_free_all_data(data, "Error creating window", 1);
 	data->img.mlx_img = mlx_new_image(data->mlx.ptr, data->map_x, data->map_y);
 	//put_image(data);
-	//mlx_key_hook(data->mlx.win, hook, NULL);
-	mlx_hook(data->mlx.win, 17, 0, exit_game, NULL);
+	mlx_hook(data->mlx.win, 02, (1L << 0), close_keys, data);
+	mlx_hook(data->mlx.win, 17, (1L << 2), exit_game, data);
 	mlx_loop(data->mlx.ptr);
 }
 

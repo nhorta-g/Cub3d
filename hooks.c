@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 20:24:04 by nhorta-g          #+#    #+#             */
-/*   Updated: 2023/09/27 23:24:50 by nuno             ###   ########.fr       */
+/*   Updated: 2023/09/28 14:42:28 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,21 @@ int	exit_game(t_data *data)
 	free_all_data(data);
 	exit(1);
 }
-/*
-int	hook(t_data *data, int key)
-{
-	int	move;
 
-	move = 0;
+int	close_keys(int key, t_data *data)
+{
 	if (key == ESC)
 		exit_game(data);
+	/*
 	if (key == W)
-		move = move_up();
+		move_up();
 	if (key == S)
-		move = move_down();
+		move_down();
 	if (key == A)
-		move = move_left();
+		move_left();
 	if (key == D)
-		move = move_right();
-	return (move);
+		move_right();
+	*/
+	return (0);
 }
-*/
+

@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/28 00:01:09 by nuno             ###   ########.fr       */
+/*   Updated: 2023/09/28 14:42:44 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ void	perror_exit(char *msg, int code);
 void	perror_exit_free_all_data(t_data *data, char *msg, int code);
 
 //mlx
-//int	hook(t_data *data, int key);
-int	exit_game(t_data *data);
+int		close_keys(int key, t_data *data);
+int		exit_game(t_data *data);
 
 //mini_map.c
 int		put_image(t_data *data);
