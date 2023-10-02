@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/28 14:42:44 by nuno             ###   ########.fr       */
+/*   Updated: 2023/10/02 12:15:49 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,60 +20,71 @@
 # include "libft/libft.h"
 # include "./mlx_linux/mlx.h"
 
-# define MAP_W 1080
-# define MAP_H 720
+//RESOLUTION
+# define MAP_W		1920
+# define MAP_H		1080
 
-//COLORS
-# define MINIMAP_NO_COLOR	0xFFFFFFFF
-# define MINIMAP_COLOR_WALL	0x002A2829
+//MINIMAP TEXTURES
+# define WALL		"./textures/bricks.xpm"
+# define EMPTY_SPAC	"./textures/blanck.xpm"
+# define PLAYER		"./textures/rug								"
 
-//keys
-# define ESC 65307
-# define A 97
-# define D 100
-# define S 115
-# define W 119
+//kEYS
+# define ESC		65307
+# define A 			97
+# define D			100
+# define S			115
+# define W			119
 
 typedef struct s_mlx
 {
-	void	*ptr;
-	void	*win;
+	void		*ptr;
+	void		*win;
 
 }	t_mlx;
 
 typedef struct s_img
 {
-	void	*mlx_img;
-	char	*addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
+	void		*mlx_img;
+	char		*addr;
+	int			bpp;
+	int			line_len;
+	int			endian;
 }	t_img;
 
 typedef struct s_player
 {
-	int		posX; // position vector of the player (X Y)
-	int		posY;
-	int		dirX; // direction of the player (X Y)
-	int		dirY;
-
+	int			posX; // position vector of the player (X Y)
+	int			posY;
+	int			dirX; // direction of the player (X Y)
+	int			dirY;
 }	t_playr;
+
+typedef struct s_mmap
+{
+	int			size;
+	char		*texture[3];
+	void		*wall;
+	void		*empty;
+	void		*player;
+}	t_mmap;
 
 typedef struct s_data
 {
 
-	char	**map;		// matriz com caracteres do mapa
-	int		c_floor;	//cor chao
-	int		c_ceiling;	//cor tecto
-	char	*texture[4]; //as quartro strings com o path para o file de cada textura
-	size_t	map_x;		//num colunas do input file dedicadas ao mapa, depois de text e cores
-	size_t	map_y;		//num linhas do input file dedicadas ao mapa, depois de text e cores
-	size_t	gnl_x;		//num linhas do input file dedicadas à textura e cores
-	int		x;			//x coord of position in map matrix of the character
-	int		y;			//y coord of position in map matrix of the character
-	t_playr	player;
-	t_mlx	mlx;
-	t_img	img;
+	char		**map;		// matriz com caracteres do mapa
+	int			c_floor;	//cor chao
+	int			c_ceiling;	//cor tecto
+	char		*texture[4]; //as quartro strings com o path para o file de cada textura
+	size_t		map_x;		//num colunas do input file dedicadas ao mapa, depois de text e cores
+	size_t		map_y;		//num linhas do input file dedicadas ao mapa, depois de text e cores
+	size_t		gnl_x;		//num linhas do input file dedicadas à textura e cores
+	int			x;			//x coord of position in map matrix of the character
+	int			y;			//y coord of position in map matrix of the character
+	t_playr		player;
+	t_mlx		mlx;
+	t_img		img;
+	t_mmap		mmap;
 
 }	t_data;
 

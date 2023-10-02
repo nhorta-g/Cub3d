@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:37:36 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/27 23:22:26 by nuno             ###   ########.fr       */
+/*   Updated: 2023/09/28 15:10:46 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ int	free_double(char **array)
 			free((array)[i]);
 	}
 	free(array);
-	//*array = 0;
-	return (1);
+	return (0);
 }
 
 int	free_data(t_data *data)
 {
-	free_double(data->map);
+	if (free_double(data->map))
+		printf("Warning, matrix data->map doesnt exist to be freed");
 	free(data);
 	return (1);
 }

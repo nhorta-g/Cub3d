@@ -13,6 +13,9 @@ int create_matrix_map(t_data *data)
 	int rows = 6;
 	int cols = 8;
 
+	data->map_x = cols;
+	data->map_x = rows;
+
 	data->map = (char **)malloc(rows * sizeof(char *));
 	if (data == NULL) {
 		perror("Memory allocation failed");
