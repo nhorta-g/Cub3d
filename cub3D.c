@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nhorta-g <nhorta-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:25 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/28 17:34:57 by nuno             ###   ########.fr       */
+/*   Updated: 2023/10/02 14:45:46 by nhorta-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(int ac, char **av)
 		return (write(1, "Error\n-Wrong number of args\n", 28));
 	}
 	init_data(data);
-	create_matrix_map(data);
+	temporary_parser(data);
 	//if (!parser(av, data))
 	//free_data(data);
 	init_mlx(data);

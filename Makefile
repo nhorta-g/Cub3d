@@ -1,6 +1,6 @@
 NAME = cub3D
 SRC = cub3D.c parser.c parser_utils.c parser_utils_2.c utils.c validate_map.c \
-	validate_map_utils.c mini_map.c draw_utils.c parser_replace_create_matrix.c \
+	validate_map_utils.c mini_map.c draw_utils.c temporary_parser.c \
 	hooks.c
 LIBFT_DIR	= libft
 LIBFT		= libft/libft.a

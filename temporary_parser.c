@@ -1,6 +1,6 @@
 #include "cub3D.h"
 
-int create_matrix_map(t_data *data) {
+int temporary_parser(t_data *data) {
 	char map[6][8] = {
 		{'1', '1', '1', '1', '1', '1', '1', '1'},
 		{'1', '0', '0', '1', '1', '0', '0', '1'},
@@ -12,6 +12,8 @@ int create_matrix_map(t_data *data) {
 
 	int rows = 6;
 	int cols = 8;
+	data->map_x = cols;
+	data->map_y = rows;
 
 	data->map = (char **)malloc(rows * sizeof(char *));
 	for (int i = 0; i < rows; i++) {
@@ -26,5 +28,9 @@ int create_matrix_map(t_data *data) {
 		}
 		printf("\n");
 	}
+	data->mmap.texture[0] = "./textures/bricks.xpm";
+	data->mmap.texture[1] = "./textures/blank";
+	data->mmap.texture[2] = "./textures/blank";
+	data->mmap.texture[3] = "./textures/blank";
 	return 0;
 }

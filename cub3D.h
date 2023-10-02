@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nhorta-g <nhorta-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/02 12:15:49 by nuno             ###   ########.fr       */
+/*   Updated: 2023/10/02 15:47:33 by nhorta-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ typedef struct s_player
 typedef struct s_mmap
 {
 	int			size;
-	char		*texture[3];
 	void		*wall;
 	void		*empty;
 	void		*player;
+	char		*texture[3];
 }	t_mmap;
 
 typedef struct s_data
@@ -118,12 +118,12 @@ int		close_keys(int key, t_data *data);
 int		exit_game(t_data *data);
 
 //mini_map.c
-int		put_image(t_data *data);
+int		image_minimap(t_data *data);
 
 //draw_utils.c
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	draw_square(t_data *data, int pos_x, int pos_y, int size, int color);
 
-int		create_matrix_map(t_data *data);
+int		temporary_parser(t_data *data);
 
 #endif
