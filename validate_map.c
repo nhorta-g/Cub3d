@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 14:57:42 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/25 13:45:07 by nuno             ###   ########.fr       */
+/*   Updated: 2023/10/03 14:08:10 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	add_spaces(t_data *data, int j)
 		data->map[j] = ft_strjoin_free(data->map[j], " ");
 }
 
-void	rectify_shape(t_data *data)
+int	rectify_shape(t_data *data)
 {
 	int	i;
 	int	j;
@@ -32,6 +32,7 @@ void	rectify_shape(t_data *data)
 		i--;
 		j++;
 	}
+	return (0);
 }
 
 int	check_illegal(char c)
@@ -66,14 +67,15 @@ int	validate_map(t_data *data)
 	rectify_shape(data);
 	while (data->map[i])
 	{
-		while (data->map[j])
+		j = 0;
+		while (data->map[i][j])
 		{
 			if (check_illegal(data->map[i][j])
 				|| check_dupe(data->map[i][j], data, i, j))
 				return (print_error("illegal char in map or char duped"));
 			if (data->map[i][j] == '0')
-				if (check_walls(data, i, j))
-					return (print_error("invalid map: unclosed"));
+				if (check_walls(data, j, i))
+					return (print_error("invalid map: unclosed/illegal char"));
 			j++;
 		}
 		i++;

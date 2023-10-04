@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nhorta-g <nhorta-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:25 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/04 15:37:05 by nuno             ###   ########.fr       */
+/*   Updated: 2023/10/04 19:23:58 by nhorta-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,14 @@ void	init_data(t_data *d)
 	d->map_y = 0;
 	d->x = -1;
 	d->y = -1;
-	d->mmap.s = 30;
+	d->mmap.s = MINI_MAP_SIZE;
 }
 
 int	main(int ac, char **av)
 {
 	t_data	*d;
 	(void)av;
+	int		i;
 
 	d = (t_data *)ft_calloc(1, sizeof(t_data));
 	if (ac != 2)
@@ -51,7 +52,18 @@ int	main(int ac, char **av)
 	}
 	init_data(d);
 	temporary_parser(d);
-	//if (!parser(av, data))
-	//free_data(data);
+	/*if (parser(av, d))
+	{
+		//i = -1;
+		//while (data->map[++i])
+			//printf(":%s:\n", data->map[i]);
+		free_data(d);
+		return (1);
+	}*/
+	i = -1;
+	while (d->map[++i])
+		printf(":%s:\n", d->map[i]);
 	init_mlx(d);
+	free_data(d);
+	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nhorta-g <nhorta-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/04 15:41:49 by nuno             ###   ########.fr       */
+/*   Updated: 2023/10/04 19:21:33 by nhorta-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 
 //MINIMAP TEXTURES
 # define WALL		"./textures/bricks.xpm"
-# define EMPTY_SPAC	"./textures/blanck.xpm"
-# define PLAYER		"./textures/rug								"
+# define EMPTY_SPAC	"./textures/blank.xpm"
+# define PLAYER		"./textures/rug"
 
 //kEYS
 # define ESC		65307
@@ -102,6 +102,9 @@ int		alloc_map(t_data *data, char **av);
 //parser_utils_2.c
 int		fill_map(char **av, t_data *data);
 int		validate_map(t_data *data);
+char	*skip_empty_lines(char *buffer, int *mapfd);
+int		check_file_format(char **av, t_data *data);
+int		return_free(char *buff);
 
 //validate_map_utils.c
 int		check_walls(t_data *data, int j, int i);

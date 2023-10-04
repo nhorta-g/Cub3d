@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nhorta-g <nhorta-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 16:11:35 by nuno              #+#    #+#             */
-/*   Updated: 2023/10/04 15:41:09 by nuno             ###   ########.fr       */
+/*   Updated: 2023/10/04 19:18:44 by nhorta-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static void	draw_map(t_data *d)
 
 int	image_minimap(t_data *d)
 {
-	d->mmap.s = MINI_MAP_SIZE;
 	d->mmap.wall = mlx_xpm_file_to_image(d->mlx.ptr, d->mmap.text[0], &d->mmap.s, &d->mmap.s);
 	d->mmap.empty = mlx_xpm_file_to_image(d->mlx.ptr, d->mmap.text[1], &d->mmap.s, &d->mmap.s);
 	d->mmap.player = mlx_xpm_file_to_image(d->mlx.ptr, d->mmap.text[2], &d->mmap.s, &d->mmap.s);
