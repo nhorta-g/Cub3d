@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nhorta-g <nhorta-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/02 15:47:33 by nhorta-g         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:41:49 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@
 # include "libft/libft.h"
 # include "./mlx_linux/mlx.h"
 
-//RESOLUTION
-# define MAP_W		1920
-# define MAP_H		1080
+//RESOLUTION and sizes
+# define MAP_W		1080
+# define MAP_H		720
+
+# define MINI_MAP_SIZE 5
 
 //MINIMAP TEXTURES
 # define WALL		"./textures/bricks.xpm"
@@ -54,19 +56,19 @@ typedef struct s_img
 
 typedef struct s_player
 {
-	int			posX; // position vector of the player (X Y)
+	int			posX; 		// position vector of the player (X Y)
 	int			posY;
-	int			dirX; // direction of the player (X Y)
+	int			dirX;		// direction of the player (X Y)
 	int			dirY;
 }	t_playr;
 
 typedef struct s_mmap
 {
-	int			size;
+	int			s;			//map size
 	void		*wall;
-	void		*empty;
+	void		*empty;		//void pointer to textures
 	void		*player;
-	char		*texture[3];
+	char		*text[3];	//paths textures
 }	t_mmap;
 
 typedef struct s_data
@@ -113,17 +115,17 @@ int		free_all_data(t_data *data);
 void	perror_exit(char *msg, int code);
 void	perror_exit_free_all_data(t_data *data, char *msg, int code);
 
-//mlx
-int		close_keys(int key, t_data *data);
-int		exit_game(t_data *data);
+//hooks
+int		close_keys(int key, t_data *d);
+int		exit_game(t_data *d);
 
 //mini_map.c
-int		image_minimap(t_data *data);
+int		image_minimap(t_data *d);
 
 //draw_utils.c
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	draw_square(t_data *data, int pos_x, int pos_y, int size, int color);
+void	my_mlx_pixel_put(t_data *d, int x, int y, int color);
+void	draw_square(t_data *d, int pos_x, int pos_y, int size, int color);
 
-int		temporary_parser(t_data *data);
+int		temporary_parser(t_data *d);
 
 #endif

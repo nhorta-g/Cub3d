@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nhorta-g <nhorta-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:37:36 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/02 16:01:16 by nhorta-g         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:17:57 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,11 @@ int	free_double(char **array)
 {
 	int	i;
 
-	if (!(array))
+	if (!array)
 		return (1);
-	i = -1;
-	while ((array)[++i])
-	{asfsdfda
-		if ((*array)[i])
-			free((array)[i]);
-	}
+	i = 0;
+	while (array[i])
+		free(array[i++]);
 	free(array);
 	return (0);
 }
