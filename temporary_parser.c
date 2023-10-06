@@ -30,8 +30,8 @@ int temporary_parser(t_data *d) {
 		}
 		printf("\n");
 	}
-	d->mmap.text[0] = "./textures/Relva_64.xpm";
-	d->mmap.text[1] = "./textures/blank.xpm";
-	d->mmap.text[2] = "./textures/fabric.xpm";
+	d->mmap.text[0] = "./textures/redbrick_64.xpm";
+	d->mmap.text[1] = "./textures/Relva_64.xpm";
+	d->mmap.text[2] = "./textures/Ash_front_64.xpm";
 	return 1;
 }

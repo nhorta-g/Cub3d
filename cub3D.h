@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/06 16:45:23 by nuno             ###   ########.fr       */
+/*   Updated: 2023/10/06 18:30:12 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,14 @@ typedef struct s_mmap
 {
 	int			s;			//map size
 	void		*wall;
+	int			wall_w;
+	int			wall_h;
 	void		*empty;		//void pointer to textures
+	int			empty_w;
+	int			empty_h;
 	void		*player;
+	int			player_w;
+	int			player_h;
 	char		*text[3];	//paths textures
 }	t_mmap;
 
