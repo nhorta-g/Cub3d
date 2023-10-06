@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nhorta-g <nhorta-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/04 19:21:33 by nhorta-g         ###   ########.fr       */
+/*   Updated: 2023/10/06 16:45:23 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define MAP_W		1080
 # define MAP_H		720
 
-# define MINI_MAP_SIZE 5
+# define MINI_MAP_SIZE 10
 
 //MINIMAP TEXTURES
 # define WALL		"./textures/bricks.xpm"
@@ -40,16 +40,16 @@
 
 typedef struct s_mlx
 {
-	void		*ptr;
-	void		*win;
+	void		*ptr;		//mlx_init pointer
+	void		*win;		//window pointer
 
 }	t_mlx;
 
 typedef struct s_img
 {
-	void		*mlx_img;
+	void		*mlx_img;	//image pointer
 	char		*addr;
-	int			bpp;
+	int			bpp;		//bits per pixel
 	int			line_len;
 	int			endian;
 }	t_img;

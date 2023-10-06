@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nhorta-g <nhorta-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:25 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/04 19:23:58 by nhorta-g         ###   ########.fr       */
+/*   Updated: 2023/10/06 15:47:39 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,19 @@ int	main(int ac, char **av)
 	temporary_parser(d);
 	/*if (parser(av, d))
 	{
-		//i = -1;
-		//while (data->map[++i])
-			//printf(":%s:\n", data->map[i]);
+		i = -1;
+		while (d->map[++i])
+			printf(":%s:\n", d->map[i]);
 		free_data(d);
 		return (1);
 	}*/
+
+	for (size_t k = 0; k < d->map_y; k++)
+	{
+		for (size_t l = 0; l < d->map_x; l++)
+			printf("%d ", d->map[k][l]);
+		printf("\n");
+	}
 	i = -1;
 	while (d->map[++i])
 		printf(":%s:\n", d->map[i]);
