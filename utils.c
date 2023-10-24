@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nhorta-g <nhorta-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:37:36 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/04 18:21:35 by nhorta-g         ###   ########.fr       */
+/*   Updated: 2023/10/07 01:22:01 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,16 @@ int	free_data(t_data *data)
 
 int	free_all_data(t_data *data)
 {
-	if (!data->mlx.win)
+	if (data->mlx.win)
 		mlx_destroy_window(data->mlx.ptr, data->mlx.win);
-	/*
-	mlx_destroy_image(, texturas);
-	mlx_destroy_image(, );
-	mlx_destroy_image(, );
-	mlx_destroy_image(, );
-	mlx_destroy_image(, );
-	*/
-	mlx_destroy_display(data->mlx.ptr);
+	if (data->mmap.text[0])
+		mlx_destroy_image(data->mlx.ptr, data->mmap.text[0]);
+	if (data->mmap.text[1])
+		mlx_destroy_image(data->mlx.ptr, data->mmap.text[1]);
+	if (data->mmap.text[2])
+		mlx_destroy_image(data->mlx.ptr, data->mmap.text[2]);
+	if (data->mlx.ptr)
+		mlx_destroy_display(data->mlx.ptr);
 	free(data->mlx.ptr);
 	free_data(data);
 	return (1);

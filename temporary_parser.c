@@ -11,9 +11,9 @@ int temporary_parser(t_data *d) {
 	};
 
 	int rows = 6; //y
-	d->map_y = rows;
+	d->mapY = rows;
 	int cols = 8; //x
-	d->map_x = cols;
+	d->mapX = cols;
 
 	d->map = (char **)malloc((rows + 1) * sizeof(char *));
 	for (int y = 0; y < rows; y++) {
@@ -30,8 +30,6 @@ int temporary_parser(t_data *d) {
 		}
 		printf("\n");
 	}
-	d->mmap.text[0] = "./textures/redbrick_64.xpm";
-	d->mmap.text[1] = "./textures/Relva_64.xpm";
-	d->mmap.text[2] = "./textures/Ash_front_64.xpm";
+
 	return 1;
 }

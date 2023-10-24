@@ -41,7 +41,7 @@ g++ *.cpp -lSDL
 #define texHeight 64
 #define mapWidth 24
 #define mapHeight 24
-
+/// @brief /// @brief /// @brief
 char map[mapWidth][mapHeight]=
 char map[20][14]=
 
@@ -119,7 +119,7 @@ int main(int /*argc*/, char */*argv*/[])
       double rayDirX = dirX + planeX*cameraX;
       double rayDirY = dirY + planeY*cameraX;
 
-      //which box of the map we're in
+      //coord of   which box of the map we're in
       int mapX = int(posX);
       int mapY = int(posY);
 

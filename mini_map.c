@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 16:11:35 by nuno              #+#    #+#             */
-/*   Updated: 2023/10/06 19:02:08 by nuno             ###   ########.fr       */
+/*   Updated: 2023/10/24 13:00:29 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static void	draw_map(t_data *d)
 	size_t y;
 
 	y = 0;
-	while (y < d->map_y)
+	while (y < d->mapY)
 	{
 		x = 0;
-		while (x < d->map_x)
+		while (x < d->mapX)
 		{
 			if (d->map[y][x] == '1')
 				mlx_put_image_to_window(d->mlx.ptr, \
@@ -40,6 +40,9 @@ static void	draw_map(t_data *d)
 
 int	image_minimap(t_data *d)
 {
+	d->mmap.text[0] = WALL;
+	d->mmap.text[1] = EMPTY_SPAC;
+	d->mmap.text[2] = PLAYER;
 	d->mmap.wall = mlx_xpm_file_to_image(d->mlx.ptr, \
 		d->mmap.text[0], &d->mmap.wall_w, &d->mmap.wall_h);
 		printf(" %d-%d ", d->mmap.wall_w, d->mmap.wall_h);

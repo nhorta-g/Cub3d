@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 16:08:33 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/03 13:57:43 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/24 13:00:29 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	check_walls(t_data *data, int j, int i)
 	size_t	d;
 
 	a = i;
-	while (a > 0 && (a < data->map_y - 1 && data->map[++a][j])
+	while (a > 0 && (a < data->mapY - 1 && data->map[++a][j])
 		&& walkable(data->map[a][j]))
 		continue ;
 	b = i;
@@ -43,7 +43,7 @@ int	check_walls(t_data *data, int j, int i)
 	if (!data->map[i][d] || !data->map[i][c] || !data->map[b][j]
 		|| !data->map[a][j] || data->map[i][d] != '1'
 		|| data->map[i][c] != '1' || data->map[b][j] != '1'
-		|| (a == data->map_y - 1 && data->map[a][j] != '1'))
+		|| (a == data->mapY - 1 && data->map[a][j] != '1'))
 		return (1);
 	return (0);
 }

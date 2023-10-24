@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 14:57:42 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/03 14:08:10 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/24 13:00:29 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	add_spaces(t_data *data, int j)
 {
-	while (ft_strlen(data->map[j]) < data->map_x)
+	while (ft_strlen(data->map[j]) < data->mapX)
 		data->map[j] = ft_strjoin_free(data->map[j], " ");
 }
 
@@ -23,11 +23,11 @@ int	rectify_shape(t_data *data)
 	int	i;
 	int	j;
 
-	i = data->map_y;
+	i = data->mapY;
 	j = 0;
 	while (i >= 0 && data->map[j])
 	{
-		if (ft_strlen(data->map[j]) < data->map_x)
+		if (ft_strlen(data->map[j]) < data->mapX)
 			add_spaces(data, j);
 		i--;
 		j++;

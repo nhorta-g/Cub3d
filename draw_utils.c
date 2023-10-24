@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nhorta-g <nhorta-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 18:33:41 by nuno              #+#    #+#             */
-/*   Updated: 2023/10/04 17:52:29 by nhorta-g         ###   ########.fr       */
+/*   Updated: 2023/10/24 12:50:05 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	my_mlx_pixel_put(t_data *d, int x, int y, int color)
 {
 	char	*pixel;
 
-	if (x >= MAP_H || y >= MAP_H || x < 0 || y < 0)
+	if (x >= WIN_W || y >= WIN_H || x < 0 || y < 0)
 		return ;
 	pixel = d->img.addr + y * d->img.line_len + x * (d->img.bpp / 8);
 	*(unsigned int*)pixel = color;
