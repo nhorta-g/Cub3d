@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/24 13:00:29 by nuno             ###   ########.fr       */
+/*   Updated: 2023/10/25 20:55:29 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <math.h>
 # include "libft/libft.h"
 # include "./mlx_linux/mlx.h"
 
@@ -42,6 +43,7 @@
 
 typedef struct s_img
 {
+	int			**img;
 	void		*mlx_img;	//image pointer
 	char		*addr;
 	int			bpp;		//bits per pixel
@@ -82,12 +84,11 @@ typedef struct s_data
 	size_t		mapX;		//num colunas do input file dedicadas ao mapa, depois de text e cores
 	size_t		mapY;		//num linhas do input file dedicadas ao mapa, depois de text e cores
 	size_t		gnl_x;		//num linhas do input file dedicadas à textura e cores
-	int			x;			//x coord of position in map matrix of the character
-	int			y;			//y coord of position in map matrix of the character
+	int			playerX;	//x coord of position in map matrix of the character
+	int			playerY;	//y coord of position in map matrix of the character
 	double		posX;		//A mm coord do player mas double
 	double		posY;		//A mm coord do player mas double
 	int			cub_size;	//Comprimento em pixeis de cada aresta de um cubo
-	int			hit;
 	int			buffer[WIN_H][WIN_W];
 	double		cameraX;
 	double		rayDirX;
@@ -100,8 +101,23 @@ typedef struct s_data
 	double		deltaDistY;
 	double		sideDistX;
 	double		sideDistY;
+	double		perpWallDist;
+	double		wallX;
+	int			angle;
+	int 		lineHeight;
 	int			stepX;
 	int			stepY;
+	int			hit;
+	int			side;
+	int			drawStart;
+	int			drawEnd;
+	int			textureX;
+	int			textureY;
+	double		texture_position;
+	double		step;
+	double		mvSpeed;
+	double		rtSpeed;
+	double		negRt;
 	t_mlx		mlx;
 	t_img		img;
 	t_mmap		mmap;
@@ -138,10 +154,14 @@ void		perror_exit_free_all_data(t_data *data, char *msg, int code);
 
 //raycasting.c
 void		init_vars(t_data *d);
+void		rendering(t_data *d);
 int			start_raycasting(void *data_src);
 
 //init_ray.c
 void		init_ray(t_data *d, int x);
+void		find_hit_wall(t_data *d);
+void		draw_size(t_data *d);
+void		calculate_wall_hit(t_data *d);
 
 //hooks.c
 int			close_keys(int key, t_data *d);

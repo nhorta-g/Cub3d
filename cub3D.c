@@ -6,13 +6,13 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:25 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/24 13:00:29 by nuno             ###   ########.fr       */
+/*   Updated: 2023/10/25 20:31:35 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	init_mlx(t_data *d)
+static void	init_mlx(t_data *d)
 {
 	d->mlx.ptr = mlx_init();
 	if (!d->mlx.ptr)
@@ -28,15 +28,15 @@ void	init_mlx(t_data *d)
 	mlx_loop(d->mlx.ptr);
 }
 
-void	init_data(t_data *d)
+static void	init_data(t_data *d)
 {
 	d->c_ceiling = -1;
 	d->c_floor = -1;
 	d->gnl_x = 0;
 	d->mapX = 0;
 	d->mapY = 0;
-	d->x = -1;
-	d->y = -1;
+	d->playerX = -1;
+	d->playerY = -1;
 }
 
 int	main(int ac, char **av)

@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 14:57:42 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/24 13:00:29 by nuno             ###   ########.fr       */
+/*   Updated: 2023/10/25 21:00:07 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,15 @@ int	check_illegal(char c)
 int	check_dupe(char c, t_data *data, int i, int j)
 {
 	if ((c == 'N' || c == 'S' || c == 'W' || c == 'E')
-		&& (data->x == -1 && data->y == -1))
+		&& (data->posX == -1 && data->posY == -1))
 	{
-		data->x = j;
-		data->y = i;
+		data->posX = j + 0.3;
+		data->posY = i + 0.3;
+		data->angle = 0 + (90 * (data->map[i][j] == 'W')) + (180 * \
+				(data->map[i][j] == 'S')) + (270 * (data->map[i][j] == 'E'));
 	}
 	else if ((c == 'N' || c == 'S' || c == 'W' || c == 'E')
-		&& (data->x != -1 && data->y != -1))
+		&& (data->posX != -1 && data->posY != -1))
 		return (1);
 	return (0);
 }
